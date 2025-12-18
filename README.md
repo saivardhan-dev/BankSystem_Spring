@@ -12,7 +12,7 @@ Service (BankService)         <-- contains business logic (add, deposit, withdra
         v
 Model (User)                  <-- data object (accountNumber, name, balance)
 ```
-Spring Boot starts a server (Tomcat) on port 8080. When you hit an endpoint like:
+Spring Boot starts a server (Tomcat) on port 8080. When I hit an endpoint like:
 ```text
 API Endpoints: 
 - Home            GET /api/
@@ -29,19 +29,20 @@ Balance
 - Deposit Amount  POST /api/users/{accountNumber}/deposit?amount=1000
 - Withdraw Amount POST /api/users/{accountNumber}/withdraw?amount=500
 ```  
-…Spring routes that request to the correct method in your BankController.
+…Spring routes that request to the correct method in our BankController.
 
 ## 1. What Happens when I runs the application? 
 Step by step flow
-- You run BankApiApplication.main()
+- Runs BankApiApplication.main()
 - SpringApplication.run(...) starts Spring Boot
-- Spring Boot:
+  
+Spring Boot:
 - starts embedded Tomcat (port 8080)
 - scans your package for Spring components (beans)
 - creates objects like BankController and BankService
 - connects dependencies (DI)
 
-Then your server is ready to receive requests.
+Then our server is ready to receive requests.
 
 ## 2. What each class is doing
 ### User class (Model / POJO)
