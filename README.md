@@ -57,7 +57,7 @@ Then our Application server is ready to receive requests.
  - balance
 with getters/setters.
 
-Spring uses it to automatically convert JSON ↔ Java object.
+Spring uses it to automatically convert JSON ↔ Java object(Deserialization).
 
 Example:
 ```text
