@@ -33,16 +33,20 @@ Balance
 
 ## 1. What Happens when I runs the application? 
 Step by step flow
-- Runs BankApiApplication.main()
-- SpringApplication.run(...) starts Spring Boot
+- JVM Starts execution from main(), Runs BankApiApplication.main()
+- SpringApplication.run(...) starts Spring Boot application
   
 Spring Boot:
-- starts embedded Tomcat (port 8080)
+- Creates the Spring Container
+- Scans packages for components (@RestController, @Service, etc.)
+- Creates and wires all beans
+- Starts the embedded Tomcat server (default on port 8080)
 - scans your package for Spring components (beans)
-- creates objects like BankController and BankService
-- connects dependencies (DI)
-
-Then our server is ready to receive requests.
+- Before any request, Spring Boot Initializes Beans
+- creates bean objects like BankController and BankService
+- injects dependencies (DI)
+- 
+Then our Application server is ready to receive requests.
 
 ## 2. What each class is doing
 ### User class (Model / POJO)
