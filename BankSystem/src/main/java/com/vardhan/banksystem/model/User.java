@@ -1,20 +1,20 @@
 package com.vardhan.banksystem.model;
 
 public class User {
-    private int accountNumber;
+    private String accountNumber;
     private String name;
     private double balance;
 
-    public User(int accountNumber, String name, double balance){
+    public User(String accountNumber, String name, double balance){
         this.accountNumber = accountNumber;
         this.name = name;
         this.balance = balance;
     }
 
-    public int getAccountNumber() {
+    public String getAccountNumber() {
         return accountNumber;
     }
-    public void setAccountNumber(int accountNumber) {
+    public void setAccountNumber(String accountNumber) {
         this.accountNumber=accountNumber;
     }
 

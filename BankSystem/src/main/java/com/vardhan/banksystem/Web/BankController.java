@@ -38,21 +38,21 @@ public class BankController {
     }
 
     @GetMapping("/users/{accountNumber}")
-    public ResponseEntity<User> get(@PathVariable int accountNumber) {
+    public ResponseEntity<User> get(@PathVariable String accountNumber) {
         return bank.getUser(accountNumber)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @GetMapping("/users/{accountNumber}/balance")
-    public ResponseEntity<Double> balance(@PathVariable int accountNumber) {
+    public ResponseEntity<Double> balance(@PathVariable String accountNumber) {
         return bank.getUser(accountNumber)
                 .map(u -> ResponseEntity.ok(u.getBalance()))
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping("/users/{accountNumber}/deposit")
-    public ResponseEntity<?> deposit(@PathVariable int accountNumber,
+    public ResponseEntity<?> deposit(@PathVariable String accountNumber,
                                      @RequestParam @Min(1) double amount) {
         try {
             double newBalance = bank.deposit(accountNumber, amount);
@@ -65,7 +65,7 @@ public class BankController {
     }
 
     @PostMapping("/users/{accountNumber}/withdraw")
-    public ResponseEntity<?> withdraw(@PathVariable int accountNumber,
+    public ResponseEntity<?> withdraw(@PathVariable String accountNumber,
                                       @RequestParam @Min(1) double amount) {
         try {
             double newBalance = bank.withdraw(accountNumber, amount);

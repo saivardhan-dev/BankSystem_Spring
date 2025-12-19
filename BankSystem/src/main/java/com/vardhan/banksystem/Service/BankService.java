@@ -9,12 +9,12 @@ import java.util.concurrent.ConcurrentHashMap;
 
 @Service
 public class BankService {
-    private final Map<Integer,User> users = new ConcurrentHashMap<>();
+    private final Map<String,User> users = new ConcurrentHashMap<>();
 
     public List<User> listUsers(){
         return new ArrayList<>(users.values());
     }
-    public Optional<User> getUser(int id){
+    public Optional<User> getUser(String id){
         return Optional.ofNullable(users.get(id));
     }
     public User addUser(User u){
@@ -25,7 +25,7 @@ public class BankService {
         return u;
     }
 
-    public double deposit(int accountNumber, double amount){
+    public double deposit(String accountNumber, double amount){
         if(amount<0) throw new IllegalArgumentException("Invalid deposit amount: Amount should be greater than 0");
         User u = users.get(accountNumber);
         if (u == null) throw new NoSuchElementException("User not found");
@@ -34,7 +34,7 @@ public class BankService {
             return u.getBalance();
         }
     }
-    public double withdraw(int accountNumber, double amount){
+    public double withdraw(String accountNumber, double amount){
         if(amount<0) throw new IllegalArgumentException("Invalid withdraw amount: Amount should be greater than 0");
         User u = users.get(accountNumber);
         if (u == null) throw new NoSuchElementException("User not found");
