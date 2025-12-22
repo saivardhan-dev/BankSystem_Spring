@@ -3,6 +3,7 @@ package com.vardhan.banksystem.Web;
 import com.vardhan.banksystem.model.User;
 import com.vardhan.banksystem.Service.BankService;
 import jakarta.validation.constraints.Min;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -15,10 +16,11 @@ import java.util.NoSuchElementException;
 @RequestMapping("/api")
 @Validated
 public class BankController {
-    private final BankService bank;
-    public BankController(BankService bank) {
-        this.bank = bank;
-    }
+    @Autowired
+    private BankService bank;
+//    public BankController(BankService bank) {
+//        this.bank = bank;
+//    }
 
     @GetMapping("/")
     public String home() {
